@@ -60,11 +60,3 @@ forward_backward(P_initial, evidence)
 
 evidence = np.array([False,False,True,True,True,False]) 
 forward_backward(P_initial, evidence)
-
-
-    
-
-
-
-
-
