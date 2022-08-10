@@ -142,10 +142,10 @@ coef(lasso_4c) # get the coefficients
 ## d)
 
 \begin{enumerate}
-\item True
-\item False
-\item False
-\item True
+\item When comparing computational speed between step-wise feature selection methods and Lasso for features selection, Lasso is much faster: True
+\item It is easier for ridge regression than Lasso to result in coefficients equal zero, namely due to the quadratic penalization term in ridge: False
+\item For the purpose of feature selection, both Ridge and Lasso are equally appropriate: False
+\item Elastic Net is a combination of Lasso and Ridge: True
 \end{enumerate}
 
 
@@ -209,10 +209,10 @@ ggpairs(synthetic.train)+
 
 ## a)
 \begin{enumerate}
-\item True
-\item False
-\item True
-\item True
+\item For the polynomial regression (where polynomial functions of features are used as predictors), variance increases when including predictor with a high order of the power: True
+\item If the polynomial functions from (1) are replaced with step functions, then the regression model is too simple to be overfitted on a dataset even with multiple cutpoints: False
+\item The smoothing spline ensures smoothness of its function, g, by having a penalty term $\int g'(t)^2 \ dt$ in its loss: True
+\item The $K$-nearest neighbors regression (local regression) has a high bias when its parameter, $k$, is high: True
 \end{enumerate}
 
 
@@ -276,10 +276,17 @@ ggarrange(plot1, plot2,
 # Problem 4 (11P)
 
 ## a) (2P) - Multiple choice
-1: False\
-2: True\
-3: True\
-4: True\
+\begin{enumerate}
+\item A downside of simple regression trees is that they cannot handle interaction terms: False
+\item In boosting, the parameter d controls the number of splits allowed in each try. When $d=2$, we allow for models with 2-way interactions: True
+\item The random forest approach improves bagging, because it reduces the variance of the predictor function by decorrelating the trees: True
+\item The number of trees $B$ in boosting is a tuning parameter: True
+\end{enumerate}
+
+1: False
+2: True
+3: True
+4: True
 
 ## b) (2P)
 
@@ -393,15 +400,12 @@ varImpPlot(rf.Penguins, pch = 20, main = "")
 # Problem 5 (6P) 
   
 ## a) (2P) - Multiple choice  
-  
-(i) Logistic regression is the preferred method for this data set, because it gives nice interpretable parameter estimates.
-FALSE
-(ii) In this dataset we are guaranteed to find a separating hyperplane, unless there are exact feature ties (two patients with the exact same gene data, but different outcome).
-FALSE
-(iii) When fitting a support vector classifier, we usually have to standardize the variables first. 
-TRUE
-(iv) By choosing a smaller budget parameter $C$ we are making the model less biased, but introduce more variance.
-TRUE 
+\begin{enumerate}
+\item Logistic regression is the preferred method for this data set, because it gives nice interpretable parameter estimates: False
+\item In this dataset we are guaranteed to find a separating hyperplane, unless there are exact feature ties (two patients with the exact same gene data, but different outcome): True
+\item When fitting a support vector classifier, we usually have to standardize the variables first: True
+\item By choosing a smaller budget parameter $C$ we are making the model less biased, but introduce more variance: True
+\end{enumerate}
 
 
 
@@ -540,15 +544,12 @@ Based on the barplot in (iii), the three most important predictors to assess the
 
 Say for *each* of them if it is true or false.
 
-(i) K-means is optimizing clusters such that the within-cluster variance becomes large.
-FALSE
-(ii) No matter how many times you run K-means clustering, its cluster centroids will always end up in the same locations.
-FALSE
-(iii) Strong correlation between predictors allows PCR to be more effective for predicting a response when prediction is made based on the first two principal components.
-FALSE
-(iv) We can do outlier/anomaly detection with PCA.
-TRUE
-
+\begin{enumerate}
+\item K-means is optimizing clusters such that the within-cluster variance becomes large: False
+\item No matter how many times you run K-means clustering, its cluster centroids will always end up in the same locations: False
+\item Strong correlation between predictors allows PCR to be more effective for predicting a response when prediction is made based on the first two principal components: False
+\item We can do outlier/anomaly detection with PCA: True
+\end{enumerate}
 
 
 
@@ -556,8 +557,8 @@ TRUE
 
 (i)
 One easy way to achieve the desired clustering is by setting K = 4. 
-```{r, fig.height=10, fig.width=10, eval=T}
 
+```{r, fig.height=10, fig.width=10, eval=T}
 K = 4  # your choice
 km.out = kmeans(happiness.X, K)
 
@@ -580,8 +581,7 @@ Ind[1] = 1
 for (i in 1:3){
 Ind[i+1] <- min(which(clusters.sort > i))
 names <- names(clusters.sort[Ind[i]:Ind[i+1]-1])
-clusters.score[i] <- mean(happiness.XY[names,"Ladder.score"])
-}
+clusters.score[i] <- mean(happiness.XY[names,"Ladder.score"])}
 names <- names(clusters.sort[Ind[i+1]:149])
 clusters.score[4] <- mean(happiness.XY[names,"Ladder.score"])
 print(clusters.score)
